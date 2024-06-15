@@ -43,7 +43,15 @@ class SudokuGUI:
                 else:
                     current_row.append(int(value))
             grid.append(current_row)
-        return grid           
+        return grid   
+     
+     def set_grid(self, grid):
+        for row in range(9):
+            for col in range(9):
+                self.cells[row][col].delete(0, tk.END)
+                if grid[row][col] != 0:
+                    self.cells[row][col].insert(0, grid[row][col])
+    
 
 if __name__ == "__main__":
     root = tk.Tk()
