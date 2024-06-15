@@ -7,6 +7,7 @@ class SudokuGUI:
         justify='center', bd=3, relief='raised')
         for _ in range(9)] for _ in range(9)]
         self.create_grid()
+        self.create_buttons()
 
      def create_grid(self):
         for i in range(9):
@@ -14,6 +15,10 @@ class SudokuGUI:
                 self.cells[i][j].grid(row=i, column=j, padx=3, pady=3)
                 self.cells[i][j].config(highlightthickness=1.5, highlightbackground='gray')
     
+     def create_buttons(self):
+        solve_button = tk.Button(self.root, text="Solve with CSP", width=25, height=2 , bg="#ff9966" )
+        solve_button.grid(row=10, column=0, columnspan=5, padx=5, pady=5)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
