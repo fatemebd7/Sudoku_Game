@@ -31,6 +31,20 @@ class SudokuGUI:
             for col in range(9):
                 self.cells[row][col].delete(0, tk.END)
 
+
+     def get_grid(self):
+        grid = []
+        for row in range(9):
+            current_row = []
+            for col in range(9):
+                value = self.cells[row][col].get()
+                if value == '':
+                    current_row.append(0)
+                else:
+                    current_row.append(int(value))
+            grid.append(current_row)
+        return grid           
+
 if __name__ == "__main__":
     root = tk.Tk()
     gui = SudokuGUI(root)
