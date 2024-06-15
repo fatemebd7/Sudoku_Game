@@ -20,3 +20,19 @@ def is_safe(grid, row, col, num):
                 return False
 
     return True
+
+def solve_sudoku(grid):
+    empty_loc = find_empty_location(grid)
+    if not empty_loc:
+        return True
+    row, col = empty_loc
+
+    for num in range(1, 10):
+        if is_safe(grid, row, col, num):
+            grid[row][col] = num
+
+            if solve_sudoku(grid):
+                return True
+            grid[row][col] = 0
+
+    return False
