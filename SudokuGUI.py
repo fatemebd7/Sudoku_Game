@@ -1,4 +1,7 @@
 import tkinter as tk
+from tkinter import messagebox
+from SudokuSolver import solve_sudoku
+
 class SudokuGUI:
      def __init__(self, root):
         self.root = root
@@ -16,7 +19,7 @@ class SudokuGUI:
                 self.cells[i][j].config(highlightthickness=1.5, highlightbackground='gray')
     
      def create_buttons(self):
-        solve_button = tk.Button(self.root, text="Solve with CSP", width=25, height=2 , bg="#ff9966" )
+        solve_button = tk.Button(self.root, text="Solve with CSP",command=self.solve_csp, width=25, height=2 , bg="#ff9966" )
         solve_button.grid(row=10, column=0, columnspan=5, padx=5, pady=5)
 
         solve_genetic_button = tk.Button(self.root, text="Solve with GA", width=25, height=2 , bg="#ff9966")
@@ -52,7 +55,13 @@ class SudokuGUI:
                 if grid[row][col] != 0:
                     self.cells[row][col].insert(0, grid[row][col])
     
-
+     def solve_csp(self):
+        grid = self.get_grid()
+        if solve_sudoku(grid):
+            self.set_grid(grid)
+        else:
+            messagebox.showerror("Error", "No solution exists")
+    
 if __name__ == "__main__":
     root = tk.Tk()
     gui = SudokuGUI(root)
