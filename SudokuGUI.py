@@ -19,6 +19,8 @@ class SudokuGUI:
         solve_button = tk.Button(self.root, text="Solve with CSP", width=25, height=2 , bg="#ff9966" )
         solve_button.grid(row=10, column=0, columnspan=5, padx=5, pady=5)
 
+        solve_genetic_button = tk.Button(self.root, text="Solve with GA", width=25, height=2 , bg="#ff9966")
+        solve_genetic_button.grid(row=10, column=5, columnspan=5, padx=5, pady=5)
 
 if __name__ == "__main__":
     root = tk.Tk()
