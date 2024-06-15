@@ -22,8 +22,14 @@ class SudokuGUI:
         solve_genetic_button = tk.Button(self.root, text="Solve with GA", width=25, height=2 , bg="#ff9966")
         solve_genetic_button.grid(row=10, column=5, columnspan=5, padx=5, pady=5)
 
-        clear_button = tk.Button(self.root, text="Clear", width=12, height=2 , bg="#ffcc99")
+        clear_button = tk.Button(self.root, text="Clear", command=self.clear_grid, width=12, height=2 , bg="#ffcc99")
         clear_button.grid(row=11, column=0, columnspan=10, padx=5, pady=5)
+
+
+     def clear_grid(self):
+        for row in range(9):
+            for col in range(9):
+                self.cells[row][col].delete(0, tk.END)
 
 if __name__ == "__main__":
     root = tk.Tk()
