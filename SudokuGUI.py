@@ -46,8 +46,6 @@ class SudokuGUI:
                 self.cells[row][col].delete(0, tk.END)
         self.timer_label.config(text="Time: 0 sec")
 
-
-
      def get_grid(self):
         grid = []
         for row in range(9):
@@ -57,6 +55,12 @@ class SudokuGUI:
                 if value == '':
                     current_row.append(0)
                 else:
+                    if not value.isdigit():
+                        messagebox.showerror("Error" , "Please Enter a valid number")
+                        return None
+                    elif int (value)>9:
+                         messagebox.showerror("Error" , "Please Enter a valid number less than 9")
+                         return None
                     current_row.append(int(value))
             grid.append(current_row)
         return grid   
