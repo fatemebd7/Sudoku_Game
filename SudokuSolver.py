@@ -80,4 +80,12 @@ class SudokuGA:
         child1 = np.vstack((parent1[:crossover_point], parent2[crossover_point:]))
         child2 = np.vstack((parent2[:crossover_point], parent1[crossover_point:]))
         return child1, child2
+
+    def mutate(self, individual):
+        if random.random() < self.mutation_rate:
+            row = random.randint(0, 8)
+            col1, col2 = random.sample(range(9), 2)
+            if self.grid[row][col1] == 0 and self.grid[row][col2] == 0:
+                individual[row][col1], individual[row][col2] = individual[row][col2], individual[row][col1]
+        return individual
           
