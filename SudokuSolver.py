@@ -88,4 +88,16 @@ class SudokuGA:
             if self.grid[row][col1] == 0 and self.grid[row][col2] == 0:
                 individual[row][col1], individual[row][col2] = individual[row][col2], individual[row][col1]
         return individual
-          
+
+    def evolve(self):
+        for _ in range(self.generations):
+            new_population = []
+            selected_individuals = self.selection()
+            for i in range(0, self.population_size, 2):
+                parent1 = selected_individuals[i]
+                parent2 = selected_individuals[i+1]
+                child1, child2 = self.crossover(parent1, parent2)
+                new_population.extend([self.mutate(child1), self.mutate(child2)])
+            self.population = new_population
+        return max(self.population, key=lambda x: self.fitness(x))
+      
