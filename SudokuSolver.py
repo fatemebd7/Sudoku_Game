@@ -73,4 +73,11 @@ class SudokuGA:
     def selection(self):
         weights = [self.fitness(ind) for ind in self.population]
         return random.choices(self.population, weights=weights, k=self.population_size)
+
+
+    def crossover(self, parent1, parent2):
+        crossover_point = random.randint(0, 8)
+        child1 = np.vstack((parent1[:crossover_point], parent2[crossover_point:]))
+        child2 = np.vstack((parent2[:crossover_point], parent1[crossover_point:]))
+        return child1, child2
           
