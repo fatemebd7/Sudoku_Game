@@ -22,7 +22,7 @@ class SudokuGUI:
         solve_button = tk.Button(self.root, text="Solve with CSP",command=self.solve_csp, width=25, height=2 , bg="#ff9966" )
         solve_button.grid(row=10, column=0, columnspan=5, padx=5, pady=5)
 
-        solve_genetic_button = tk.Button(self.root, text="Solve with GA", width=25, height=2 , bg="#ff9966")
+        solve_genetic_button = tk.Button(self.root, text="Solve with GA",command=self.solve_genetic, width=25, height=2 , bg="#ff9966")
         solve_genetic_button.grid(row=10, column=5, columnspan=5, padx=5, pady=5)
 
         clear_button = tk.Button(self.root, text="Clear", command=self.clear_grid, width=12, height=2 , bg="#ffcc99")
@@ -61,6 +61,13 @@ class SudokuGUI:
             self.set_grid(grid)
         else:
             messagebox.showerror("Error", "No solution exists")
+
+     def solve_genetic(self):
+        grid = self.get_grid()
+        grid = np.array(grid)
+        solution = solve_sudoku_genetic(grid)
+        self.set_grid(solution)
+        
     
 if __name__ == "__main__":
     root = tk.Tk()

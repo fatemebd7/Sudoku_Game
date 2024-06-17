@@ -1,3 +1,10 @@
+import tkinter as tk
+from tkinter import messagebox
+import numpy as np
+import random
+
+
+
 def find_empty_location(grid):
     for row in range(9):
         for col in range(9):
@@ -101,7 +108,7 @@ class SudokuGA:
             self.population = new_population
         return max(self.population, key=lambda x: self.fitness(x))
     
-    
+
 def solve_sudoku_genetic(grid):
     sudoku_ga = SudokuGA(grid)
     solution = sudoku_ga.evolve()
