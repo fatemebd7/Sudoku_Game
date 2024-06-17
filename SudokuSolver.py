@@ -100,4 +100,10 @@ class SudokuGA:
                 new_population.extend([self.mutate(child1), self.mutate(child2)])
             self.population = new_population
         return max(self.population, key=lambda x: self.fitness(x))
+    
+    
+def solve_sudoku_genetic(grid):
+    sudoku_ga = SudokuGA(grid)
+    solution = sudoku_ga.evolve()
+    return solution.tolist()
       
