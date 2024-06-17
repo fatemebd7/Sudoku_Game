@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import numpy as np
 import random
-
+from SudokuSolver import solve_sudoku , solve_sudoku_genetic
 
 
 def find_empty_location(grid):
