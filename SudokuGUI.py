@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from SudokuSolver import solve_sudoku
+import numpy as np
+from SudokuSolver import solve_sudoku , solve_sudoku_genetic
 
 class SudokuGUI:
      def __init__(self, root):
