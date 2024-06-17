@@ -43,3 +43,14 @@ class SudokuGA:
         self.population_size = population_size
         self.generations = generations
         self.mutation_rate = mutation_rate
+
+
+    def create_individual(self):
+        individual = self.grid.copy()
+        for row in range(9):
+            available_numbers = set(range(1, 10)) - set(individual[row])
+            for col in range(9):
+                if individual[row][col] == 0:
+                    individual[row][col] = random.choice(list(available_numbers))
+                    available_numbers.remove(individual[row][col])
+        return individual       
