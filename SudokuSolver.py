@@ -62,4 +62,11 @@ class SudokuGA:
                 if individual[row][col] == 0:
                     individual[row][col] = random.choice(list(available_numbers))
                     available_numbers.remove(individual[row][col])
-        return individual       
+        return individual 
+    
+    def     fitness(self, individual):
+        row_count = sum([len(set(row)) for row in individual])
+        col_count = sum([len(set(col)) for col in np.transpose(individual)])
+        subgrid_count = sum([len(set(individual[r:r+3, c:c+3].flatten())) for r in range(0, 9, 3) for c in range(0, 9, 3)])
+        return row_count + col_count + subgrid_count
+          
