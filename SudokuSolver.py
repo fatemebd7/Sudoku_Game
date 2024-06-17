@@ -36,3 +36,10 @@ def solve_sudoku(grid):
             grid[row][col] = 0
 
     return False
+
+class SudokuGA:
+    def __init__(self, grid, population_size=100, generations=5000, mutation_rate=0.01):
+        self.grid = grid
+        self.population_size = population_size
+        self.generations = generations
+        self.mutation_rate = mutation_rate
