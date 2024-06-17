@@ -43,6 +43,15 @@ class SudokuGA:
         self.population_size = population_size
         self.generations = generations
         self.mutation_rate = mutation_rate
+        self.population = self.initialize_population()
+    
+    def initialize_population(self):
+        population = []
+        for _ in range(self.population_size):
+            individual = self.create_individual()
+            population.append(individual)
+        return population
+    
 
 
     def create_individual(self):
